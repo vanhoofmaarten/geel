@@ -1,0 +1,14 @@
+{
+	"name": "geel",
+	"description": "A redesign of a local government website.",
+	"version": "0.1.0",
+	"homepage": "http://geel.maartenvanhoof.be",
+	"dependencies": {
+		"modular-scale": "*",
+		"fontawesome" : "*",
+		"trmix": "*",
+		"jquery": ">=2.1.1",
+		"headjs": "*",
+		"suitstrap" : "https://github.com/vanhoofmaarten/suitstrap.git#c03b58ae4c922958de32a7d403f305fa5f3e8239"
+	}
+}
