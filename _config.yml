@@ -11,11 +11,11 @@ destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
 baseurl:          /
-url:              http://suitstrap.maartenvanhoof.be
+url:              http://geel.maartenvanhoof.be
 encoding:         UTF-8
 
 # Custom vars
 current_version:  0.1.0
-repo:             https://github.com/vanhoofmaarten/suitstrap
+repo:             https://github.com/vanhoofmaarten/geel
 
-download_source:  https://github.com/vanhoofmaarten/vanhoofmaarten/archive/master.zip
+download_source:  https://github.com/vanhoofmaarten/geel/archive/master.zip

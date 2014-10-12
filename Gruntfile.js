@@ -216,7 +216,16 @@ module.exports = function(grunt) {
 		/* ==========================================================================
 		 * Copy
 		 * ======================================================================== */
-		copy: {},
+		copy: {
+			docs: {
+				src: [
+					'js/**/*.*',
+					'img/**/*.*',
+					'css/**/*.*',
+				],
+				dest: 'docs/'
+			}
+		},
 
 
 
@@ -296,7 +305,14 @@ module.exports = function(grunt) {
 			},
 			sass: {
 				files: ["sass/**/*.scss"],
-				tasks: ['sass']
+				tasks: ['sass','copy:docs']
+			},
+			docs : {
+				files: ["docs/**/*.html"],
+				tasks: [
+					'jekyll',
+					'copy:docs'
+				]
 			}
 		},
 
