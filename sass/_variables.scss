@@ -84,7 +84,7 @@
 	/* Typography
 	   ========================================================================== */
 	/* Font, line-height, and color for body text, headings, and more. */
-	$font-family-sans-serif:  "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	$font-family-sans-serif:  "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	$font-family-serif:       Georgia, "Times New Roman", Times, serif;
 
 	/* Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`. */
@@ -301,6 +301,8 @@
 	$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2);
 	/* Small `.form-control` height */
 	$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2);
+
+	$input-box-shadow:               none;
 
 	$legend-color:                   $gray-dark;
 	$legend-border-color:            #e5e5e5;

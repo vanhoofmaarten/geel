@@ -67,7 +67,7 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts" !default; //
 
 /* Base styles
    ========================================================================== */
-@import "base/base";
+@import "base/scaffolding";
 @import "../bower_components/suitstrap/sass/base/Links";
 @import "../bower_components/suitstrap/sass/base/Images";
 @import "../bower_components/suitstrap/sass/base/Horizontalrules";
@@ -77,7 +77,7 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts" !default; //
 @import "../bower_components/suitstrap/sass/base/Code";
 @import "../bower_components/suitstrap/sass/base/Emphasis";
 @import "../bower_components/suitstrap/sass/base/Background";
-@import "../bower_components/suitstrap/sass/base/Forms";
+@import "base/Forms";
 @import "../bower_components/suitstrap/sass/base/Headings";
 @import "../bower_components/suitstrap/sass/base/Lists";
 @import "../bower_components/suitstrap/sass/base/Paragraphs";
@@ -98,11 +98,11 @@ $fa-font-path: "//netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts" !default; //
 // @import "../bower_components/suitstrap/sass/components/ComponentAnimations";
 // @import "../bower_components/suitstrap/sass/components/Glyphicons";
 // @import "../bower_components/suitstrap/sass/components/Dropdowns";
-@import "../bower_components/suitstrap/sass/components/Buttons";
+@import "components/Buttons";
 // @import "../bower_components/suitstrap/sass/components/ButtonGroups";
 // @import "../bower_components/suitstrap/sass/components/ButtonToolbar";
 // @import "../bower_components/suitstrap/sass/components/Caret";
-// @import "../bower_components/suitstrap/sass/components/InputGroups";
+@import "../bower_components/suitstrap/sass/components/InputGroups";
 // @import "../bower_components/suitstrap/sass/components/Navs";
 // @import "../bower_components/suitstrap/sass/components/Navbar";
 // @import "../bower_components/suitstrap/sass/components/Breadcrumbs";
