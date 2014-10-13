@@ -8,7 +8,6 @@
 		"fontawesome" : "*",
 		"trmix": "*",
 		"jquery": ">=2.1.1",
-		"headjs": "*",
-		"suitstrap" : "https://github.com/vanhoofmaarten/suitstrap.git#c03b58ae4c922958de32a7d403f305fa5f3e8239"
+		"headjs": "*"
 	}
 }
