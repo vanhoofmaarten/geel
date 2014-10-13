@@ -20,10 +20,10 @@ html {
 	height: 100%;
 
 	@media (min-width: $screen--small) {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
-	@media (min-width: $screen--medium) {
+	@media (min-width: $screen--large) {
 		font-size: $font-size-base;
 	}
 }
@@ -42,11 +42,6 @@ body {
 	font-size: 100%;
 	font-family: $font-family-base;
 	line-height: $line-height-base;
-
-	// .tr-directwrite &,
-	// .tr-gdi & {
-	// 	//font-family: "Segoe UI", Arial, sans-serif;
-	// }
 
 	.tr-coretext & {
 		-webkit-font-smoothing: antialiased;

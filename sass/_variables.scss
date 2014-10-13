@@ -13,20 +13,20 @@
 	$gray-dark:              lighten($gray-base, 20%);   /* #333 */
 	$gray:                   lighten($gray-base, 33.5%); /* #555 */
 	$gray-light:             lighten($gray-base, 46.7%); /* #777 */
-	$gray-lighter: 			lighten(#000, 90%);
-	$gray-lightest: 		lighten(#000, 97%);   // #f7f7f7
+	$gray-lighter: 			 lighten(#000, 90%);
+	$gray-lightest: 		 lighten(#000, 97%);   // #f7f7f7
 
-	$black: 				#000;
-	$black-90: 				lighten(#000, 10%);
-	$black-80: 				lighten(#000, 20%);
-	$black-70: 				lighten(#000, 30%);
-	$black-60: 				lighten(#000, 40%);
-	$black-50: 				lighten(#000, 50%);
-	$black-40: 				lighten(#000, 60%);
-	$black-30: 				lighten(#000, 70%);
-	$black-20: 				lighten(#000, 80%);
-	$black-10: 				lighten(#000, 90%);
-	$white: 				#fff;
+	$black: 				 #000;
+	$black-90: 				 lighten(#000, 10%);
+	$black-80: 				 lighten(#000, 20%);
+	$black-70: 				 lighten(#000, 30%);
+	$black-60: 				 lighten(#000, 40%);
+	$black-50: 				 lighten(#000, 50%);
+	$black-40: 				 lighten(#000, 60%);
+	$black-30: 				 lighten(#000, 70%);
+	$black-20: 				 lighten(#000, 80%);
+	$black-10: 				 lighten(#000, 90%);
+	$white: 				 #fff;
 
 
 
@@ -40,15 +40,15 @@
 	$brand-gray-light:          #c8c8c8;
 	$brand-gray-lightest:       #f7f7f7;
 
-	$brand-primary:         	#e62525;
+	$brand-primary:         	#ff5900;
 	$brand-primary-light: 		lighten($brand-primary, 13%);
 	$brand-primary-lighter: 	lighten($brand-primary, 26%);
 	$brand-primary-lightest: 	lighten($brand-primary, 37%);
 
-	$brand-secondary:           #6f1024;
-	$brand-tertiary:            #6f1024;
+	$brand-secondary:           #ffc400;
+	$brand-tertiary:            #00AAAA;
 
-	$brand-success:         	#85C928;
+	$brand-success:         	#33cc00;
 	$brand-warning:         	#EDB62B;
 	$brand-danger:          	#ED4D26;
 	$brand-info:            	#486ACC;
@@ -91,7 +91,7 @@
 	$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 	$font-family-base:        $font-family-sans-serif;
 
-	$font-size-base:           20px;
+	$font-size-base:           18px;
 	//$font-size-large:        ms(1);
 	$font-size-large:          ceil($font-size-base * 1.25);
 	//$font-size-small:        ms(-1);
@@ -223,11 +223,11 @@
 
 	$btn-primary-color:              #fff;
 	$btn-primary-bg:                 $brand-primary;
-	$btn-primary-border:             darken($btn-primary-bg, 2%);
+	$btn-primary-border:             $btn-primary-bg;
 
 	$btn-secondary-color:            $body-bg;
 	$btn-secondary-bg:               $brand-secondary;
-	$btn-secondary-border:           darken($btn-secondary-bg, 2%);
+	$btn-secondary-border:           $btn-secondary-bg;
 
 	$btn-success-color:              #fff;
 	$btn-success-bg:                 $brand-success;
@@ -279,7 +279,7 @@
 	/* `<input disabled>` background color */
 	$input-bg-disabled:              $gray-lighter;
 
-	$input-height:                   ($line-height-relative * 2);
+	$input-height:                   ms(5, 1rem);
 	$input-padding-vertical:         ($line-height-relative / 2);
 	$input-padding--horizontal:      1em;
 
@@ -584,8 +584,8 @@
 	/* Form states and alerts
 	   ========================================================================== */
 
-	$state-success-text:             #468847;
-	$state-success-bg:               #dff0d8;
+	$state-success-text:             $brand-success;
+	$state-success-bg:               mix($body-bg, $state-success-text);
 	$state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%);
 
 	$state-info-text:                #3a87ad;
@@ -902,7 +902,7 @@
 	/* Horizontal offset for forms and lists. */
 	$component-offset-horizontal: 180px;
 	/* Text muted color */
-	$text-muted:                  $gray-light;
+	$text-muted:                  $black-50;
 	/* Abbreviations and acronyms border color */
 	$abbr-border-color:           $gray-light;
 	/* Headings small color */
@@ -918,4 +918,4 @@
 	/* Width of horizontal description list titles */
 	$dl-horizontal-offset:        $component-offset-horizontal;
 	/* Horizontal line color. */
-	$hr-border:                   $gray-lighter;
+	$hr-border:                   3px solid $gray-lighter;

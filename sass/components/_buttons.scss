@@ -22,7 +22,7 @@
 	@include ButtonSize(
 		$btn-padding-vertical,
 		$btn-padding-horizontal,
-		$font-size-base,
+		1rem,
 		$line-height-base,
 		$btn-border-radius
 	);
@@ -155,6 +155,14 @@
 		}
 	}
 }
+
+
+.Button--square {
+	@include Square(ms(5, 1rem));
+	padding-left: 0;
+	padding-right: 0;
+}
+
 
 
 /* Button Sizes

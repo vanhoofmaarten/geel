@@ -1,0 +1,144 @@
+/* ==========================================================================
+	Page
+========================================================================== */
+
+
+/*	Page-header
+========================================================================== */
+.Page-header{
+	background: $brand-primary;
+
+	&,
+	a{
+		color: $brand-white;
+		color: rgba($brand-white, 0.66);
+	}
+}
+
+	.Page-header-content{
+		padding-top: ($line-height-relative * 2);
+		padding-bottom: ($line-height-relative * 2);
+	}
+
+		.Page-header-title{
+			color: $brand-white;
+			margin: 0;
+		}
+
+		.Page-header-subtitle{
+			margin-top: ($line-height-relative / 2);
+		}
+
+		.Page-header-buttons{
+			margin-top: $line-height-relative * 2;
+
+			.Button{
+				display: block;
+				margin-top: $line-height-relative / 2;
+
+				@media (min-width: $screen--small) {
+					display: inline-block;
+				}
+			}
+		}
+
+
+/*	Page-section
+	========================================================================== */
+.Page-section{
+
+	&.Page-section--default{
+		background: $brand-white;
+	}
+
+	&.Page-section--grayLight{
+		background: $brand-gray-lightest;
+
+		.Button--ghost{
+			.js.no-touch &:hover,
+			.no-js &:hover,
+			&:focus, {
+				color: $brand-gray-lightest;
+			}
+		}
+	}
+
+	&.Page-section--grayDark{
+		background: $brand-gray;
+
+		.Button--ghost{
+			.js.no-touch &:hover,
+			.no-js &:hover,
+			&:focus, {
+				color: $brand-gray;
+			}
+		}
+	}
+
+	&.Page-section--primary{
+		background: $brand-primary;
+
+		.Button--ghost{
+			.js.no-touch &:hover,
+			.no-js &:hover,
+			&:focus, {
+				color: $brand-primary;
+			}
+		}
+	}
+
+	&.Page-section--secondary{
+		background: $brand-secondary;
+
+		.Button--ghost{
+			.js.no-touch &:hover,
+			.no-js &:hover,
+			&:focus, {
+				color: $brand-secondary;
+			}
+		}
+	}
+
+	&.Page-section--tertiary{
+		background: $brand-tertiary;
+
+		.Button--ghost{
+			.js.no-touch &:hover,
+			.no-js &:hover,
+			&:focus, {
+				color: $brand-tertiary;
+			}
+		}
+	}
+
+	&.Page-section--grayDark,
+	&.Page-section--primary,
+	&.Page-section--secondary,
+	&.Page-section--tertiary{
+		&,
+		a{
+			color: $brand-white;
+			color: rgba($brand-white, 0.66);
+		}
+
+		.js.no-touch & a:hover,
+		.no-js & a:hover,
+		& a:focus, {
+			color: $brand-white;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		strong{
+			color: $brand-white;
+		}
+	}
+}
+
+
+
+
