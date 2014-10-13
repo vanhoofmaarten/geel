@@ -45,7 +45,58 @@ module.exports = function(grunt) {
 		 * ======================================================================== */
 		clean: {
 			dist: ['dist'],
-			docs: 'docs/dist'
+			docs: 'docs/dist',
+			ghpages: '_gh_pages'
+		},
+
+
+		/* ==========================================================================
+		 * Create a custom Modernizr
+		 * ========================================================================== */
+		modernizr: {
+
+			dist: {
+				// [REQUIRED] Path to the build you're using for development.
+				"devFile": "remote",
+
+				// [REQUIRED] Path to save out the built file.
+				"outputFile": "<%= src %>js/Vendor/modernizr.custom.js",
+
+				"extra": {
+					"shiv": true,
+					"printshiv": false,
+					"load": true,
+					"mq": false,
+					"cssclasses": true
+				},
+
+				"extensibility": {
+					"addtest": false,
+					"prefixed": false,
+					"teststyles": false,
+					"testprops": false,
+					"testallprops": false,
+					"hasevents": false,
+					"prefixes": false,
+					"domprefixes": false
+				},
+
+				// By default, this task will crawl your project for references to Modernizr tests.
+				// Set to false to disable.
+				"parseFiles": true,
+
+				"uglify": false,
+
+				// When parseFiles = true, this task will crawl all *.js, *.css, *.scss files, except files that are in node_modules/.
+				// You can override this by defining a "files" array below.
+				"files": {
+					"src": [
+						"<%= src %>Sass/**/*.scss",
+						"<%= src %>js/*.js"
+					]
+				},
+			}
+
 		},
 
 
@@ -103,6 +154,7 @@ module.exports = function(grunt) {
 				banner: '<%= banner %>\n<%= jqueryCheck %>',
 				stripBanners: false
 			},
+
 		},
 
 
@@ -217,13 +269,33 @@ module.exports = function(grunt) {
 		 * Copy
 		 * ======================================================================== */
 		copy: {
+			dev: {
+				files: {
+					//'<%= src %>js/Vendor/head.load.js': '<%= src %>bower_components/headjs/dist/1.0.0/head.load.js',
+					'<%= src %>js/Vendor/jquery.min.js': '<%= src %>bower_components/jquery/dist/jquery.min.js',
+					//'<%= src %>Css/outdatedBrowser.min.css': '<%= src %>bower_components/outdatedbrowser/outdatedbrowser/outdatedBrowser.min.css',
+					//'<%= src %>js/Vendor/outdatedBrowser.min.js': '<%= src %>bower_components/outdatedbrowser/outdatedbrowser/outdatedBrowser.min.js',
+				}
+			},
 			docs: {
 				src: [
 					'js/**/*.*',
 					'img/**/*.*',
 					'css/**/*.*',
+					'index.html'
 				],
 				dest: 'docs/'
+			},
+			fakeJekyll:{
+				expand: true,
+				cwd: 'docs/',
+				src: [
+					'js/**/*.*',
+					'img/**/*.*',
+					'css/**/*.*',
+					'index.html'
+				],
+				dest: '_gh_pages/'
 			}
 		},
 
@@ -305,14 +377,11 @@ module.exports = function(grunt) {
 			},
 			sass: {
 				files: ["sass/**/*.scss"],
-				tasks: ['sass','copy:docs']
+				tasks: ['dev-build']
 			},
 			docs : {
 				files: ["docs/**/*.html"],
-				tasks: [
-					'jekyll',
-					'copy:docs'
-				]
+				tasks: ['dev-build']
 			}
 		},
 
@@ -396,4 +465,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
 	grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
 	grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
+
+	grunt.registerTask('dev-build', ['sass', 'autoprefixer', 'clean:ghpages', 'copy']);
 };
