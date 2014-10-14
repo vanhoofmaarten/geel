@@ -281,8 +281,7 @@ module.exports = function(grunt) {
 				src: [
 					'js/**/*.*',
 					'img/**/*.*',
-					'css/**/*.*',
-					'index.html'
+					'css/**/*.*'
 				],
 				dest: 'docs/'
 			},
@@ -405,66 +404,7 @@ module.exports = function(grunt) {
 
 	// Docs HTML validation task
 	grunt.registerTask('validate-html', ['jekyll', 'validation']);
+	//grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
-	var runSubset = function(subset) {
-		return !process.env.TWBS_TEST || process.env.TWBS_TEST === subset;
-	};
-	var isUndefOrNonZero = function(val) {
-		return val === undefined || val !== '0';
-	};
-
-	// Test task.
-	var testSubtasks = [];
-
-	// Skip core tests if running a different subset of the test suite
-	if (runSubset('core')) {
-		testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit', 'docs']);
-	}
-
-	// Skip HTML validation if running a different subset of the test suite
-	if (runSubset('validate-html') &&
-		// Skip HTML5 validator on Travis when [skip validator] is in the commit message
-		isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
-		testSubtasks.push('validate-html');
-	}
-
-	grunt.registerTask('test', testSubtasks);
-
-	// JS distribution task.
-	grunt.registerTask('dist-js', ['concat', 'uglify:core']);
-
-	// CSS distribution task.
-	// grunt.registerTask('sass-compile', ['sass:compileCore', 'sass:compileTheme']);
-	// grunt.registerTask('dist-css', ['sass-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
-
-	grunt.registerTask('sass-compile', ['sass:compileCore']);
-	grunt.registerTask('dist-css', ['sass-compile', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore']);
-
-	// Full distribution task.
-	grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
-
-	// Default task.
-	grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
-
-	// Version numbering task.
-	// grunt change-version-number --oldver=A.B.C --newver=X.Y.Z
-	// This can be overzealous, so its changes should always be manually reviewed!
-	grunt.registerTask('change-version-number', 'sed');
-
-	// task for building customizer
-	// grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-	// grunt.registerTask('build-customizer-html', 'jade');
-	// grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function() {
-	// 	var banner = grunt.template.process('<%= banner %>');
-	// 	generateRawFiles(grunt, banner);
-	// });
-
-	// Docs task.
-	grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
-	grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
-	grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
-	grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
-	grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
-
-	grunt.registerTask('dev-build', ['sass', 'autoprefixer', 'clean:ghpages', 'copy']);
+	grunt.registerTask('dev-build', ['clean:ghpages', 'sass', 'autoprefixer', 'copy:docs', 'jekyll', 'validation']);
 };

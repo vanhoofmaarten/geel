@@ -2539,6 +2539,9 @@ hr {
   border: 0;
   border-top: 3px solid #e6e6e6; }
 
+.VerticalRule.VerticalRule--left {
+  border-left: 3px solid #e6e6e6; }
+
 /* ==========================================================================
    Abbreviations and acronyms
    ========================================================================== */
