@@ -28,6 +28,8 @@
 	);
 	user-select: none;
 
+	box-shadow: $box-shadow-base;
+
 	&,
 	&:active,
 	&.is-active {

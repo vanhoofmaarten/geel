@@ -5,6 +5,19 @@
 		{% include head.html %}
 	</head>
 	<body>
-		{{ content }}
+		{% include app-header.html %}
+
+
+
+		<!-- ================ -->
+		<!--       Main       -->
+		<!-- ================ -->
+		<main class="App-content" id="content" role="main">
+			{{ content }}
+		</main>
+
+
+
+		{% include app-footer.html %}
 	</body>
 </html>
