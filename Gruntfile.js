@@ -29,12 +29,10 @@ module.exports = function(grunt) {
 		 * ======================================================================== */
 		pkg: grunt.file.readJSON('package.json'),
 		banner: '/*!\n' +
-			' * Suitstrap <%= pkg.version %> by @vanhoofmaarten\n' +
+			' * Geel redesign prototype - <%= pkg.version %> - by @vanhoofmaarten\n' +
 			' *\n' +
 			' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
 			' * Licensed under <%= _.pluck(pkg.licenses, "url").join(", ") %>\n' +
-			' *\n' +
-			' * Forked from Bootstrap v3.0.0, designed and built with all the love in the world by @mdo and @fat.\n' +
 			' */\n',
 		jqueryCheck: 'if (typeof jQuery === \'undefined\') { throw new Error(\'Suitstrap\\\'s JavaScript requires jQuery\') }\n\n',
 
@@ -44,8 +42,6 @@ module.exports = function(grunt) {
 		 * Clean
 		 * ======================================================================== */
 		clean: {
-			dist: ['dist'],
-			docs: 'docs/dist',
 			ghpages: '_gh_pages'
 		},
 
@@ -266,41 +262,6 @@ module.exports = function(grunt) {
 
 
 		/* ==========================================================================
-		 * Copy
-		 * ======================================================================== */
-		copy: {
-			dev: {
-				files: {
-					//'<%= src %>js/Vendor/head.load.js': '<%= src %>bower_components/headjs/dist/1.0.0/head.load.js',
-					'<%= src %>js/Vendor/jquery.min.js': '<%= src %>bower_components/jquery/dist/jquery.min.js',
-					//'<%= src %>Css/outdatedBrowser.min.css': '<%= src %>bower_components/outdatedbrowser/outdatedbrowser/outdatedBrowser.min.css',
-					//'<%= src %>js/Vendor/outdatedBrowser.min.js': '<%= src %>bower_components/outdatedbrowser/outdatedbrowser/outdatedBrowser.min.js',
-				}
-			},
-			docs: {
-				src: [
-					'js/**/*.*',
-					'img/**/*.*',
-					'css/**/*.*'
-				],
-				dest: 'docs/'
-			},
-			fakeJekyll:{
-				expand: true,
-				cwd: 'docs/',
-				src: [
-					'js/**/*.*',
-					'img/**/*.*',
-					'css/**/*.*',
-					'index.html'
-				],
-				dest: '_gh_pages/'
-			}
-		},
-
-
-
-		/* ==========================================================================
 		 * Connect
 		 * ======================================================================== */
 		connect: {
@@ -370,17 +331,9 @@ module.exports = function(grunt) {
 				files: '<%= jshint.grunt.src %>',
 				tasks: ['jshint:grunt']
 			},
-			src: {
-				files: '<%= jshint.core.src %>',
-				tasks: ['jshint:src', 'qunit', 'concat']
-			},
 			sass: {
 				files: ["sass/**/*.scss"],
-				tasks: ['dev-build']
-			},
-			docs : {
-				files: ["docs/**/*.html"],
-				tasks: ['dev-build']
+				tasks: ['styles']
 			}
 		},
 
@@ -403,8 +356,11 @@ module.exports = function(grunt) {
 		========================================================================== */
 
 	// Docs HTML validation task
+	grunt.registerTask('default', ['watch']);
 	grunt.registerTask('validate-html', ['jekyll', 'validation']);
+	grunt.registerTask('styles', ['sass', 'autoprefixer']);
+
 	//grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-customizer']);
 
-	grunt.registerTask('dev-build', ['clean:ghpages', 'sass', 'autoprefixer', 'copy:docs', 'jekyll', 'validation']);
+	grunt.registerTask('build', ['clean:ghpages', 'sass', 'autoprefixer', 'validation']);
 };
